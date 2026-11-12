@@ -1,0 +1,8 @@
+# CPU-only variant of research/frametime/requirements-cluster.txt (small torch wheel, ~200 MB).
+--extra-index-url https://download.pytorch.org/whl/cpu
+numpy>=1.26,<3
+scipy>=1.11
+pandas>=2.1
+scikit-learn>=1.4
+lightgbm>=4.3,<5
+torch>=2.3,<3

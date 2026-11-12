@@ -1,0 +1,369 @@
+{
+  "feature_set": "spark-ft-v2",
+  "_note": "Levers/ladder copied from engine/profile.hpp QualityLadder (4 levers incl. AA) on 2026-11-07; checked against MODEL_CONTRACT v2 / V2_NOTES.md. Logs without q_aa (laptop-v1) read aa=0 (on). Default dataset laptop-v2 (fingerprints, lever sweeps); mix with --data research/frametime/data,research/frametime/data-v2.",
+  "data_dir": "research/frametime/data-v2",
+  "budget_ms": null,
+  "quantiles": [
+    0.5,
+    0.95,
+    0.99
+  ],
+  "step_s": 0.016666667,
+  "levers": [
+    {
+      "name": "scale",
+      "field": "q_scale",
+      "levels": 4,
+      "sim": "scale",
+      "values": [
+        1.0,
+        0.8,
+        0.65,
+        0.5
+      ]
+    },
+    {
+      "name": "particles",
+      "field": "q_particles",
+      "levels": 4,
+      "sim": "density",
+      "values": [
+        1.0,
+        0.6,
+        0.35,
+        0.15
+      ]
+    },
+    {
+      "name": "glow",
+      "field": "q_glow",
+      "levels": 4,
+      "sim": "glow",
+      "values": [
+        1.0,
+        0.75,
+        0.5,
+        0.0
+      ]
+    },
+    {
+      "name": "aa",
+      "field": "q_aa",
+      "levels": 2,
+      "sim": "aa",
+      "values": [
+        1.0,
+        0.6
+      ],
+      "_note": "values = cost multiplier of circle/ring/line pixel work at each level (aliased spans cheaper); provisional until measured from v2 paired data"
+    }
+  ],
+  "ladder": [
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      2,
+      1
+    ],
+    [
+      2,
+      2,
+      2,
+      1
+    ],
+    [
+      2,
+      2,
+      3,
+      1
+    ],
+    [
+      3,
+      2,
+      3,
+      1
+    ],
+    [
+      3,
+      3,
+      3,
+      1
+    ]
+  ],
+  "feature_groups": {
+    "planned": [
+      "n_steps",
+      "n_steps_active",
+      "acc_ms",
+      "hitstop_ms",
+      "trauma",
+      "scene_menu",
+      "scene_play",
+      "scene_overlay",
+      "entities",
+      "enemies",
+      "enemy_k0",
+      "enemy_k1",
+      "enemy_k2",
+      "enemy_k3",
+      "enemy_k4",
+      "projectiles",
+      "enemy_projectiles",
+      "pickups",
+      "telegraphs",
+      "effects",
+      "popups",
+      "tele_due_now",
+      "tele_due_6",
+      "tele_due_30",
+      "burst_due",
+      "particles_alive",
+      "particles_streak",
+      "particles_expiring",
+      "wave",
+      "wave_to_spawn",
+      "q_render_scale",
+      "q_render_mpx",
+      "q_particle_density",
+      "q_glow_scale",
+      "est_particles",
+      "q_aa"
+    ],
+    "prevwork": [
+      "est_raster_mpx",
+      "est_glow_mpx",
+      "naive_ms",
+      "est_aa_mpx",
+      "t_ref_steps_ms",
+      "t_ref_render_ms",
+      "t_ref_ms"
+    ],
+    "history": [
+      "t_prev_ms",
+      "t_prev2_ms",
+      "t_ema_ms",
+      "t_max8_ms",
+      "t_steps_prev_ms",
+      "t_render_prev_ms",
+      "steps_prev"
+    ],
+    "system": [
+      "cpu_ghz",
+      "ctxsw_prev"
+    ],
+    "fingerprint": [
+      "fp_noise_p99_ms",
+      "fp_noise_p999_ms",
+      "fp_sleep_p99_ms",
+      "fp_log_k_step",
+      "fp_log_k_rpx",
+      "fp_log_cliff",
+      "fp_log_k_glow",
+      "fp_log_k_part",
+      "fp_log_ghz",
+      "fp_log_lat_l3",
+      "fp_log_lat_dram",
+      "fp_log_bw_dram"
+    ]
+  },
+  "ablation_groups": {
+    "steps": [
+      "n_steps",
+      "n_steps_active",
+      "acc_ms",
+      "hitstop_ms"
+    ],
+    "scene": [
+      "trauma",
+      "scene_menu",
+      "scene_play",
+      "scene_overlay",
+      "wave",
+      "wave_to_spawn"
+    ],
+    "entities": [
+      "entities",
+      "enemies",
+      "enemy_k0",
+      "enemy_k1",
+      "enemy_k2",
+      "enemy_k3",
+      "enemy_k4",
+      "projectiles",
+      "enemy_projectiles",
+      "pickups",
+      "effects",
+      "popups"
+    ],
+    "lookahead": [
+      "telegraphs",
+      "tele_due_now",
+      "tele_due_6",
+      "tele_due_30",
+      "burst_due"
+    ],
+    "particles": [
+      "particles_alive",
+      "particles_streak",
+      "particles_expiring",
+      "est_particles"
+    ],
+    "quality": [
+      "q_render_scale",
+      "q_render_mpx",
+      "q_particle_density",
+      "q_glow_scale",
+      "q_aa"
+    ],
+    "prevwork": [
+      "est_raster_mpx",
+      "est_glow_mpx",
+      "est_aa_mpx"
+    ],
+    "naive": [
+      "naive_ms"
+    ],
+    "history": [
+      "t_prev_ms",
+      "t_prev2_ms",
+      "t_ema_ms",
+      "t_max8_ms",
+      "t_steps_prev_ms",
+      "t_render_prev_ms",
+      "steps_prev"
+    ],
+    "system": [
+      "cpu_ghz",
+      "ctxsw_prev"
+    ],
+    "tref": [
+      "t_ref_steps_ms",
+      "t_ref_render_ms",
+      "t_ref_ms"
+    ],
+    "fingerprint": [
+      "fp_noise_p99_ms",
+      "fp_noise_p999_ms",
+      "fp_sleep_p99_ms",
+      "fp_log_k_step",
+      "fp_log_k_rpx",
+      "fp_log_cliff",
+      "fp_log_k_glow",
+      "fp_log_k_part",
+      "fp_log_ghz",
+      "fp_log_lat_l3",
+      "fp_log_lat_dram",
+      "fp_log_bw_dram"
+    ]
+  },
+  "history_overrides": {
+    "t_prev_ms": "t_prev",
+    "t_prev2_ms": "t_prev2",
+    "t_ema_ms": "t_ema",
+    "t_max8_ms": "t_max8",
+    "t_steps_prev_ms": "t_steps_prev",
+    "t_render_prev_ms": "t_render_prev"
+  },
+  "t_ema_alpha": 0.2,
+  "rls": {
+    "features": [
+      "n_steps_active",
+      "q_render_mpx",
+      "est_raster_mpx",
+      "est_glow_mpx",
+      "est_particles",
+      "tele_due_now",
+      "burst_due",
+      "enemies",
+      "enemy_projectiles",
+      "particles_alive",
+      "t_prev_ms",
+      "t_ema_ms",
+      "t_max8_ms",
+      "cpu_ghz",
+      "ctxsw_prev"
+    ],
+    "base": "naive_ms",
+    "max_features": 16
+  },
+  "normalisers": {
+    "none": {
+      "type": "none"
+    },
+    "resid": {
+      "type": "residual",
+      "feature": "naive_ms"
+    },
+    "lognaive": {
+      "type": "log_ratio",
+      "feature": "naive_ms",
+      "floor": 0.05
+    },
+    "tref": {
+      "type": "log_ratio",
+      "feature": "t_ref_ms",
+      "floor": 0.05
+    },
+    "cycles": {
+      "type": "log_ratio_inverse",
+      "feature": "cpu_ghz",
+      "floor": 0.4
+    },
+    "treftail": {
+      "type": "log_ratio",
+      "feature": "t_ref_ms",
+      "floor": 0.05,
+      "add": {
+        "0.95": "fp_noise_p99_ms",
+        "0.99": "fp_noise_p999_ms"
+      }
+    }
+  },
+  "controller": {
+    "margin": 0.1,
+    "up_frac": 0.8,
+    "up_hold": 30,
+    "up_cooldown": 60,
+    "react_ema_alpha": 0.25,
+    "react_down_every": 6,
+    "react_panic_frames": 3,
+    "react_up_frac": 0.65,
+    "react_up_hold": 60,
+    "decision_output": "t_p95_ms",
+    "margins_sweep": [
+      0.0,
+      0.05,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "budgets_ms": [
+      16.6666667,
+      8.3333333
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+# build output
+build/
+build-*/
+*.o
+*.d
+__pycache__/
+*.pyc
+*.ppm
+.venv/
